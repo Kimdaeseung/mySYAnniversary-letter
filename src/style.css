@@ -13,7 +13,7 @@ body {
   margin: 0;
   font-family: "Apple SD Gothic Neo", "Noto Sans KR", system-ui, sans-serif;
   background: linear-gradient(180deg, var(--bg1), var(--bg2));
-  color: rgba(255, 255, 255, .92);
+  color: rgba(255, 255, 255, 0.92);
 }
 
 .bg {
@@ -30,11 +30,11 @@ body {
 
 .paper {
   width: min(420px, 100%);
-  background: rgba(255, 255, 255, .08);
+  background: rgba(255, 255, 255, 0.08);
   backdrop-filter: blur(18px);
   border-radius: 28px;
   padding: 26px 22px;
-  border: 1px solid rgba(255, 255, 255, .18);
+  border: 1px solid rgba(255, 255, 255, 0.18);
 }
 
 .paper__top,
@@ -63,7 +63,7 @@ body {
 
 .char {
   opacity: 0;
-  animation: charIn .25s ease forwards;
+  animation: charIn 0.25s ease forwards;
 }
 
 @keyframes charIn {
@@ -82,10 +82,17 @@ body {
   }
 }
 
-/* 🎞️ film */
+/* ===============================
+   🎞️ FILM (안드로이드 가독성 개선 핵심)
+================================ */
+
 .film {
   margin: 18px -22px;
-  background: #111;
+
+  /* 🔥 핵심: 밝은 반투명 배경 */
+  background: rgba(255, 255, 255, 0.14);
+  backdrop-filter: blur(10px);
+
   overflow-x: auto;
   scrollbar-width: none;
 }
@@ -105,30 +112,35 @@ body {
 .film__edge {
   width: 8px;
   height: 140px;
-  background:
-    repeating-linear-gradient(to bottom,
-      rgba(255, 255, 255, .35) 0 6px,
+  background: repeating-linear-gradient(to bottom,
+      rgba(255, 255, 255, 0.75) 0 6px,
       transparent 6px 14px);
-  opacity: .4;
+  opacity: 0.9;
   flex-shrink: 0;
 }
 
+/* 🔥 프레임 자체를 밝게 */
 .film__frame {
   flex: 0 0 200px;
   height: 140px;
   border-radius: 10px;
   overflow: hidden;
   cursor: pointer;
+
+  background: #ffffff;
 }
 
+/* 🔥 사진 윤곽 강화 */
 .film__frame img {
   width: 100%;
   height: 100%;
   object-fit: cover;
+
+  border: 1px solid rgba(0, 0, 0, 0.15);
 }
 
 .film--fade-in {
-  animation: filmFadeIn .6s ease forwards;
+  animation: filmFadeIn 0.6s ease forwards;
 }
 
 @keyframes filmFadeIn {
@@ -143,13 +155,16 @@ body {
   }
 }
 
-/* 🎬 film end */
+/* ===============================
+   🎬 FILM END
+================================ */
+
 .film-end {
   margin-top: 14px;
   text-align: center;
   font-size: 13px;
-  opacity: .6;
-  animation: filmEndIn .8s ease forwards;
+  opacity: 0.6;
+  animation: filmEndIn 0.8s ease forwards;
 }
 
 @keyframes filmEndIn {
@@ -159,33 +174,31 @@ body {
   }
 
   to {
-    opacity: .6;
+    opacity: 0.6;
     transform: translateY(0);
   }
 }
 
-/* 🔍 viewer (확대 보기) */
+/* ===============================
+   🔍 VIEWER
+================================ */
+
 .viewer {
   position: fixed;
   inset: 0;
-  background: rgba(0, 0, 0, .85);
+  background: rgba(0, 0, 0, 0.85);
   z-index: 100;
   overflow-y: auto;
   -webkit-overflow-scrolling: touch;
 
-  /* 🔽 스크롤바 숨김 (기능 유지) */
   scrollbar-width: none;
-  /* Firefox */
   -ms-overflow-style: none;
-  /* IE, Edge */
 }
 
 .viewer::-webkit-scrollbar {
   display: none;
-  /* Chrome, Safari */
 }
 
-/* 닫기 버튼 (항상 보이게) */
 .viewer__close {
   position: fixed;
   top: 14px;
@@ -195,7 +208,7 @@ body {
   height: 36px;
   border-radius: 50%;
   border: none;
-  background: rgba(0, 0, 0, .6);
+  background: rgba(0, 0, 0, 0.6);
   color: #fff;
   font-size: 20px;
   cursor: pointer;
@@ -203,10 +216,9 @@ body {
 }
 
 .viewer__close:active {
-  background: rgba(0, 0, 0, .8);
+  background: rgba(0, 0, 0, 0.8);
 }
 
-/* 이미지 영역 (스크롤 가능) */
 .viewer__content {
   min-height: 100%;
   display: flex;
@@ -219,30 +231,32 @@ body {
   width: auto;
   max-width: 100%;
   height: auto;
-  max-height: none;
   border-radius: 12px;
 }
 
-/* hint */
+/* ===============================
+   ℹ️ HINT
+================================ */
+
 .photo-hint {
   margin-top: 10px;
   text-align: center;
   font-size: 12px;
-  opacity: .5;
+  opacity: 0.5;
   animation: hintPulse 1.6s ease-in-out infinite;
 }
 
 @keyframes hintPulse {
   0% {
-    opacity: .35;
+    opacity: 0.35;
   }
 
   50% {
-    opacity: .65;
+    opacity: 0.65;
   }
 
   100% {
-    opacity: .35;
+    opacity: 0.35;
   }
 }
 
@@ -252,5 +266,5 @@ body {
   left: 50%;
   transform: translateX(-50%);
   font-size: 12px;
-  opacity: .45;
+  opacity: 0.45;
 }
